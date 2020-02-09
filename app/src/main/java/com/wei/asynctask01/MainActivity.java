@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
             String sourceUrl = "https://github.com/maydayXi/imageTest/blob/master/";
             // 設定進度最大值
             progressDialog.setMax(imageNames.length);
-            Bitmap bitmap = null;
 
             for (int i = 0; i < imageNames.length; i++) {
                 // 完整的下載網址
