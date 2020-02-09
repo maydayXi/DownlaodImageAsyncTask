@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#607D8B"
+    tools:context=".MainActivity" >
+
+    <!--  顯示圖片的元件  -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--  下載圖片的按鈕  -->
+    <Button
+        android:id="@+id/btnDownload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_margin="6sp"
+        android:textSize="24sp"
+        android:onClick="downloadClick"
+        android:text="@string/btn_download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--  圖片操作按鈕，啟動後先不顯示  -->
+    <LinearLayout
+        android:id="@+id/opPanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/operation_drawable"
+        android:padding="6sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        android:visibility="invisible">
+
+        <!--  顯示前一張圖片  -->
+        <ImageView
+            android:id="@+id/btnPrevious"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="moveBtnClick"
+            app:srcCompat="@drawable/ic_keyboard_arrow_left_white_48dp"
+            android:contentDescription="@string/btn_previous" />
+
+        <!--  顯示下一張圖片  -->
+        <ImageView
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="moveBtnClick"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_white_48dp"
+            android:contentDescription="@string/btn_next" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
