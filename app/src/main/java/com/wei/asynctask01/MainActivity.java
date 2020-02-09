@@ -183,8 +183,10 @@ public class MainActivity extends AppCompatActivity {
                     (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
-            if (connection.getResponseCode() == HttpsURLConnection.HTTP_OK)
+            if (connection.getResponseCode() == HttpsURLConnection.HTTP_OK) {
                 inputStream = connection.getInputStream();
+                Log.d(TAG, "loadBitmap: Input Stream is null\t" + (inputStream == null));
+            }
             bitmap = BitmapFactory.decodeStream(inputStream);
             Log.d(TAG, "loadBitmap: bitmap is null\t" + (bitmap == null));
         } catch (IOException e) {
