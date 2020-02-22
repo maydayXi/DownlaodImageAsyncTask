@@ -10,9 +10,10 @@
     <!--  顯示圖片的元件  -->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,14 +38,14 @@
         android:id="@+id/opPanel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/operation_drawable"
+        android:orientation="horizontal"
         android:padding="6sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        android:visibility="invisible">
+        app:layout_constraintStart_toStartOf="parent">
 
         <!--  顯示前一張圖片  -->
         <ImageView
@@ -52,9 +53,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:contentDescription="@string/btn_previous"
             android:onClick="moveBtnClick"
-            app:srcCompat="@drawable/ic_keyboard_arrow_left_white_48dp"
-            android:contentDescription="@string/btn_previous" />
+            app:srcCompat="@drawable/ic_keyboard_arrow_left_white_48dp" />
 
         <!--  顯示下一張圖片  -->
         <ImageView
@@ -62,8 +63,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:contentDescription="@string/btn_next"
             android:onClick="moveBtnClick"
-            app:srcCompat="@drawable/ic_keyboard_arrow_right_white_48dp"
-            android:contentDescription="@string/btn_next" />
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_white_48dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private void processViews() {
         imageView = findViewById(R.id.imageView);
         opPanel = findViewById(R.id.opPanel);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     }
 
     // <summary>
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (imgPosition < 0)
             imgPosition = images.length - 1;
-        if (imgPosition > images.length)
+        if (imgPosition >= images.length)
             imgPosition = 0;
 
         imageView.setImageBitmap(images[imgPosition]);
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             // 取得下載圖片檔名
             String[] imageNames = getResources().getStringArray(R.array.icons_array);
             // 下載檔案的網址
-            String sourceUrl = "https://github.com/maydayXi/imageTest/blob/master/";
+            String sourceUrl = "https://i.imgur.com/";
             // 設定進度最大值
             progressDialog.setMax(imageNames.length);
 
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (downloads.size() > 0) {
-                images = new Bitmap[downloads.size() - 1];
+                images = new Bitmap[downloads.size()];
                 downloads.toArray(images);
             }
 
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             // 更新進度條
             progressDialog.setProgress(values[0]);
             // 設定顯示下載圖片
-            imageView.setImageBitmap(downloads.get(0));
+            imageView.setImageBitmap(downloads.get(downloads.size() - 1));
         }
 
         // <summary> 背景執行緒完成自動呼叫 </summary>
@@ -185,9 +186,10 @@ public class MainActivity extends AppCompatActivity {
             connection.connect();
             if (connection.getResponseCode() == HttpsURLConnection.HTTP_OK) {
                 inputStream = connection.getInputStream();
-                Log.d(TAG, "loadBitmap: Input Stream is null\t" + (inputStream == null));
             }
+
             bitmap = BitmapFactory.decodeStream(inputStream);
+
             Log.d(TAG, "loadBitmap: bitmap is null\t" + (bitmap == null));
         } catch (IOException e) {
             Log.d(TAG, "loadBitmap: " + e.toString());
